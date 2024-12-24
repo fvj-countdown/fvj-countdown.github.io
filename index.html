@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Mundur Penangguhan Flora Shafiq</title>
+    <link rel="icon" href="fvj-logo.jpg" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.jqueryscript.net/demo/Minimalist-Countdown-Timer-Plugin-jQuery/js/jquery.countdown.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            text-align: center;
+            background-image: url('fvj-logo.jpg'); /* Tambahkan gambar sebagai background */
+            background-size: cover; /* Sesuaikan ukuran gambar */
+            background-position: center; /* Posisikan gambar di tengah */
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.7); /* Tambahkan overlay warna gelap */
+            color: #ffffff;
+            padding: 20px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .countdown .time-box {
+            background-color: #333;
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            width: 80px;
+            height: 100px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .time-label {
+            font-size: 0.8rem;
+            color: #ffffff;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        footer {
+            margin-top: 30px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hitung Mundur Penangguhan Flora Shafiq</h1>
+    <div class="countdown" id="countdown">
+        <div>
+            <div class="time-box" id="days">00</div>
+            <div class="time-label">Hari</div>
+        </div>
+        <div>
+            <div class="time-box" id="hours">00</div>
+            <div class="time-label">Jam</div>
+        </div>
+        <div>
+            <div class="time-box" id="minutes">00</div>
+            <div class="time-label">Menit</div>
+        </div>
+        <div>
+            <div class="time-box" id="seconds">00</div>
+            <div class="time-label">Detik</div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://x.com/FloraVanJava" target="_blank">Flora van Java</a> 💘
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            const suspensionEndDate = new Date("2025-02-10T00:00:00");
+
+            function updateCountdown() {
+                const now = new Date();
+                const diff = suspensionEndDate - now;
+
+                if (diff <= 0) {
+                    $("#countdown").html("Penangguhan telah berakhir, Good Luck!");
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                $("#days").text(days.toString().padStart(2, '0'));
+                $("#hours").text(hours.toString().padStart(2, '0'));
+                $("#minutes").text(minutes.toString().padStart(2, '0'));
+                $("#seconds").text(seconds.toString().padStart(2, '0'));
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
